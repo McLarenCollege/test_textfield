@@ -19,22 +19,18 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  String address = "148 Wallaby Way";
+  TextEditingController addressController = TextEditingController(
+      text: "148 Wallaby Way");
 
   @override
   Widget build(BuildContext context) {
-    print('Rebuilding with address = $address');
+    print('Rebuilding with address = ${addressController.text}');
     return Scaffold(
       body: Center(child: TextFormField(
-        initialValue: address,
-
+        controller: addressController,
       ),),
       floatingActionButton: FloatingActionButton(
-        onPressed: (){
-          setState(() {
-            address = "16 Bellvue Road";
-          });
-        },
+        onPressed: ()=>addressController.text = "16 ",
         tooltip: 'Update Address',
         child: Icon(Icons.edit),
       ), // This trailing comma makes auto-formatting nicer for build methods.
